@@ -40,7 +40,7 @@ function superman(f)
   }
   noStroke()
   fill(0);
-  
+
   triangle(100*f,-95*f,100*f,-35*f,85*f,-85*f)
   triangle(-100*f,-95*f,-100*f,-35*f,-85*f,-85*f)
 
@@ -57,6 +57,7 @@ function setup() {
 
 function loaded() {
   button = createButton("play");
+  button.position(20,50)
   button.mousePressed(togglePlaying);
   go=1;
 }
