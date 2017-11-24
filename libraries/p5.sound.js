@@ -1517,8 +1517,10 @@ soundfile = function () {
     // TO DO --> make reverse() flip these values appropriately
     if (this._pauseTime > 0) {
       return this._pauseTime;
+      
     } else {
       return this._lastPos / ac.sampleRate;
+      
     }
   };
   /**
