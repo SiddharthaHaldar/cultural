@@ -5,11 +5,18 @@ var amp;
 var ang=0;
 var ang2=0;
 var fact=1;
+var batmanFace; // color of Batman's face
 function batman()
 {
-  fill(255,0,45);
-  rect(-50,-50,100,100);
-
+    fill(0,0,0);
+    stroke(0,0,0);
+    strokeWeight(3);
+    
+    triangle(-60,-40, -50,-135, -50,-40); // left ear
+    triangle(60,-40, 50,-135, 50,-40); // right ear
+    
+    fill(batmanFace); 
+    ellipse(0, 0, 130, 200); // face
 }
 
 function superman(f)
@@ -53,6 +60,7 @@ function setup() {
   song = loadSound("Bhayanak Atma.mp3", loaded);
   amp = new p5.Amplitude();
   background(51);
+  batmanFace = color(226, 148, 70);
 }
 
 function loaded() {
@@ -63,17 +71,18 @@ function loaded() {
 }
 
 function draw() {
+  background(255, 255, 255);
   var vol = amp.getLevel();
   var diam = map(vol, 0, 0.3, 10, 200);
   var diam2 = map(vol, 0, 0.3, 100, 300);
   var back=map(vol, 0, 1, 10, 255);
   if(song.currentTime()>11.364630208333333)
   {
-    background(random()*back,random()*back,random()*back);
+    //background(random()*back,random()*back,random()*back);
   }
   else
   {
-  background(255,0,0);
+  //background(255,0,0);
   }
   
   noStroke();
@@ -96,7 +105,7 @@ function draw() {
       //ang2+=1;
 
       
-      superman(fact/*diam/200*/);
+      batman(fact/*diam/200*/);
   pop()
   
   push()
