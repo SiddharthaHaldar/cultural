@@ -6,6 +6,9 @@ var ang=0;
 var ang2=0;
 var fact=1;
 var batmanFace; // color of Batman's face
+var batmanMask; // color of Batman's mask
+var batmanLip; // color of Batman's lips
+var batEyes; // color of Batman's outer eyes
 function batman()
 {
     fill(0,0,0);
@@ -15,8 +18,31 @@ function batman()
     triangle(-60,-40, -50,-135, -50,-40); // left ear
     triangle(60,-40, 50,-135, 50,-40); // right ear
     
-    fill(batmanFace); 
-    ellipse(0, 0, 130, 200); // face
+    fill(batmanMask); 
+    ellipse(0, 0, 130, 200); // mask
+    
+    fill(batmanFace);
+    noStroke();
+    rect(-50.5, 30, 100.5, 28); // mouth
+    triangle(-50.5,58, 50.5,58, 0,90); // chin
+    
+    fill(batmanLip);
+    ellipse(0, 45, 65, 12); // lips
+    stroke(226, 101, 70);
+    strokeWeight(1);
+    line(-30,43, 30,43); // close the lips
+    
+    fill(batmanMask);
+    noStroke();
+    triangle(-10,27, 10,27, 0,36); // nose
+    
+    fill(batEyes);
+    ellipse(-25, -30, 20, 10); // left outer eye
+    ellipse(25, -30, 20, 10); // right outer eye
+    stroke(183, 111, 64);
+    strokeWeight(5); // inner eye color
+    point(-25, -32); // left inner eye
+    point(25, -32); // right inner eye
 }
 
 function superman(f)
@@ -61,6 +87,9 @@ function setup() {
   amp = new p5.Amplitude();
   background(51);
   batmanFace = color(226, 148, 70);
+  batmanMask = color(124, 116, 116);
+  batmanLip = color(226, 121, 70);
+  batEyes = color(229, 220, 218);
 }
 
 function loaded() {
