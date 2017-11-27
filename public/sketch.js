@@ -258,12 +258,14 @@ function setup() {
   createCanvas(windowWidth,windowHeight);
   song = loadSound("Bhayanak Atma.mp3", loaded);
   amp = new p5.Amplitude();
+  amp.setInput(song)
   background(255,0,0);
-  /*song.addCue(11.364630208333333,function(){
-    roll=1
-  })*/
+  
   frameRate(60);
   setInterval(bgdraw,5)
+  /*var ele = createAudio('Bhayanak Atma.mp3')
+  ele.play()
+  amp.setInput(ele)*/
 }
 
 function loaded() {
@@ -271,9 +273,24 @@ function loaded() {
   button = createButton("pause");
   button.position(20,50)
   button.mousePressed(togglePlaying);
-  setTimeout(function(){
-    roll=1;
-  },49500)
+  var flag=0;
+  var i=0;
+  setInterval(function(){
+    if(flag==0){
+    if(amp.getLevel()>0)
+      { 
+        console.log(amp.getLevel())
+        setTimeout(function(){
+            roll=1;
+          },49500)
+        flag=1;
+      }
+    }
+    },1)
+    
+  
+  
+  
   
   //setInterval(bgdraw,5)
   
