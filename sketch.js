@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 var song;
 var button;
 var amp;
@@ -564,5 +562,4 @@ function togglePlaying() {
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
->>>>>>> d9c0112be33d51b5191f00c057d2dad268a37c93
 }
