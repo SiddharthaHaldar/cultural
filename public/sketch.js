@@ -90,7 +90,7 @@ function gramapin()
 
   strokeWeight(10)
   stroke(0)
-  fill(180,0,0)
+  fill(120,106,90)
   ellipse(350,-205,100,100)
   push()
   translate(350,-205)
