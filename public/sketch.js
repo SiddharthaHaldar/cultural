@@ -4,8 +4,129 @@ var button;
 var amp;
 var ang=0;
 var ang2=0;
+var gramang=0;
 var fact=1;
 var go=0,roll=0;
+
+function gramaphone(ang)
+{
+
+  fill(180,255,180)
+  rect(-300, -280, 750, 570, 20);
+  //knobs
+  fill(40,26,10)
+  ellipse(370,50,45,45)
+  ellipse(370,-20,45,45)
+  fill(180)
+  triangle(370,50,400,45,400,55)
+  fill(180)
+  triangle(370,-20,400,-25,400,-15)
+  //meter
+  strokeWeight(3)
+  stroke(100)
+  fill(255)
+  rect(350,100,30,150,20)
+  line(365,110,365,240)
+  for(inc=0;inc<=110;inc+=15)
+  {
+    line(360,120+inc,370,120+inc)
+  }
+  noStroke()
+  fill(255,0,0)
+  rect(350,200-map(amp.getLevel(),0,0.5,0,100),32,10,10)
+  fill(255,0,0,120)
+  rect(350,200-map(amp.getLevel(),0,0.5,0,100),32,50+map(amp.getLevel(),0,0.5,0,100),0,0,20,20)
+  fill(0)
+  ellipse(0,0,550,550)
+  fill(255,255,0)
+  ellipse(0,0,150,150)
+  fill(0,120)
+  ellipse(-240,-225,80,80)
+  noFill()
+  stroke(255,120)
+  strokeWeight(2)
+  //ellipse(0,0,500,500)
+  push()
+  rotate(ang*PI/180)
+  var rad=125;
+  for(var j=0;j<=45;j++)
+  {
+    var x=rad*Math.cos(j*PI/180)
+    var y=rad*Math.sin(j*PI/180)
+    line(x,y,x,y)
+  }
+
+  rad=150
+  for(var j=90+amp.getLevel()*2;j<=150;j++)
+  {
+    var x=rad*Math.cos(j*PI/180)
+    var y=rad*Math.sin(j*PI/180)
+    line(x,y,x,y)
+  }
+
+  rad=120
+  for(var j=170;j<=300;j++)
+  {
+    var x=rad*Math.cos(j*PI/180)
+    var y=rad*Math.sin(j*PI/180)
+    line(x,y,x,y)
+  }
+
+  rad=250
+  for(k=30;k<=360;k+=60){
+  for(var j=k;j<=k+30;j+=0.5)
+  {
+    var x=rad*Math.cos(j*PI/180)
+    var y=rad*Math.sin(j*PI/180)
+    line(x,y,x,y)
+  } 
+  } 
+  pop()
+  //gramapin()
+}
+
+function gramapin()
+{
+
+  strokeWeight(10)
+  stroke(0)
+  fill(180,0,0)
+  ellipse(350,-205,100,100)
+  push()
+  translate(350,-205)
+  rotate(PI/15)
+  push()
+  translate(0,-65)
+  strokeWeight(15)
+  stroke(128)
+  //line(350,-220,350,120)
+  line(0,50,0,450)
+  strokeWeight(6)
+  stroke(200)
+  line(0,50,0,450)
+  noStroke()
+  fill("#ef9b0f")
+  //rect(330,-270,40,150,20)
+  rect(-20,0,40,150,20)
+  push()
+  //translate(350,120)
+  translate(0,450)
+  rotate(PI/3)
+  strokeWeight(15)
+  stroke(128)
+  line(0,0,0,200)
+  strokeWeight(6)
+  stroke(200)
+  line(0,-2,0,200)
+  noStroke()
+  fill(0)
+  ellipse(0,0,6,6)
+  fill("#ef9b0f")
+  rect(-15,120,30,60,20)
+  pop()
+  pop()
+  pop()
+}
 
 function chakra()
 {
@@ -203,19 +324,22 @@ function superman(f)
 {
   /*fill(255)
   rect(-100,-height,200,height)*/
-   
+   noStroke()
   fill(0)
   ellipse(0,-100*f,200*f,70*f)
 
   fill(255,218,185);
-  rect(-100*f,-100*f,200*f,100*f);
+  rect(-100*f,-90*f,200*f,90*f);
   
   beginShape()
-  vertex(-100*f,0)
-  vertex(100*f,0)
+  vertex(-100*f,-10)
+  vertex(100*f,-10)
+  //vertex(-100*f,0*f)
+  vertex(100*f,0*f)
   vertex(60*f,100*f)
   vertex(-60*f,100*f)
-  vertex(-100*f,0)
+  vertex(-100*f,0*f)
+  vertex(-100*f,-10)
   endShape()
 
   /*beginShape()
@@ -232,6 +356,9 @@ function superman(f)
   fill(255,218,185);
   ellipse(-45*f,-80*f,105*f,40*f)
   ellipse(45*f,-80*f,105*f,40*f)
+
+
+  //tilak
   strokeWeight(5)
   stroke(255)
   for(var y=0;y<=20;y+=10)
@@ -244,14 +371,96 @@ function superman(f)
   triangle(100*f,-95*f,100*f,-35*f,85*f,-85*f)
   triangle(-100*f,-95*f,-100*f,-35*f,-85*f,-85*f)
 
-  //angry
+  //eye-brows
   strokeWeight(7)
   stroke(0)
   line(-85*f,-50*f,-10*f,-35*1.2)
   line(-10*f,-35*1.2,-10*f,-44*1.2)
   line(85*f,-50*f,10*f,-35*1.2)
   line(10*f,-35*1.2,10*f,-44*1.2)
+
+  //mouth--jawl contours
+  strokeWeight(2)
+  stroke(210,105,30,140)
+  line(-70*f,20*f,-50*f,30*f)
+  line(-50*f,30*f,-55*f,80*f)
+  line(70*f,20*f,50*f,30*f)
+  line(50*f,30*f,55*f,80*f)
+
+  //line(-35*f,60*f,30*f,55*f)
+  //line(30*f,55*f,35*f,48*f)
+  
+  fill(0)
+  beginShape()
+  vertex(-35*f,40*f)
+  vertex(35*f,40*f)
+  vertex(40*f,70*f)
+  vertex(-40*f,70*f)
+  vertex(-35*f,40*f)
+  endShape()
+
   noStroke()
+  fill(255)
+  beginShape()
+  vertex(-35*f,40*f)
+  vertex(35*f,40*f)
+  vertex(36*f,48*f)
+  vertex(-36*f,48*f)
+  vertex(-35*f,40*f)
+  endShape()
+
+  beginShape()
+  vertex(40*f,70*f)
+  vertex(-40*f,70*f)
+  vertex(-38*f,60*f)
+  vertex(38*f,60*f)
+  vertex(40*f,70*f)
+  endShape()
+
+  //eyes
+  noStroke()
+  for(var c=-1;c<=1;c+=2)
+  {
+    /*strokeWeight(5)
+    stroke(255,0,0,120)*/
+    fill(255)
+  beginShape()
+  vertex(-85*f*c,-40*f)
+  vertex(-10*f*c,-30*f)
+  vertex(-15*f*c,-15*f)
+  vertex(-65*f*c,-17*f)
+  vertex(-85*f*c,-40*f)
+  endShape()
+  
+  fill(255,0,0,100)
+  var dec=0
+  for(var cc=4;cc<=30;cc+=1)
+  {
+  fill(255,0,0,180/(cc+1))
+  beginShape()
+  vertex((-85-cc+dec)*c*f,(-40-cc+dec)*f)
+  vertex((-10+cc-dec)*c*f,(-30-cc+dec)*f)
+  vertex((-15+cc-dec)*c*f,(-15+cc-dec)*f)
+  vertex((-65-cc+dec)*c*f,(-17+cc-dec)*f)
+  vertex((-85-cc+dec)*c*f,(-40-cc+dec)*f)
+  endShape()
+}
+}
+noStroke()
+  
+  //shadow
+  fill(0,20)
+  beginShape()
+  vertex(-100*f,0)
+  vertex(-100*f,-100*f)
+  vertex(0,-100*f)
+  //vertex(0*f,0)
+  vertex(0*f,100*f)
+  vertex(-60*f,100*f)
+  vertex(-100*f,0)
+  endShape()
+  noStroke()
+
 }
 
 function setup() {
@@ -260,7 +469,7 @@ function setup() {
   amp = new p5.Amplitude();
   amp.setInput(song)
   background(255,0,0);
-  
+  console.log(document.getElementById("test").value)
   frameRate(60);
   setInterval(bgdraw,5)
   /*var ele = createAudio('Bhayanak Atma.mp3')
@@ -337,7 +546,14 @@ function bgdraw() {
   
   noStroke();
   
+  push()
+  gramang-=2;
+  translate(width/2,height/2)
+  gramaphone(gramang)
+  pop()
   
+  if(roll)
+  {
   push()
   translate(width/2,height/2)
   //if(song.currentTime()>11.364630208333333)
@@ -346,13 +562,14 @@ function bgdraw() {
         rotate(-(ang/30)*PI/180);
       }
   chakra()
+  
   pop()
 
   push()
   translate(width/2,height/2)
   
-  if(roll)
-      {
+  /*if(roll)
+      {*/
         translate(random()*map(vol,0,0.3,10,15),random()*map(vol,0,0.3,10,15))
         ang2+=1;
         if(ang2%20==0)
@@ -361,10 +578,13 @@ function bgdraw() {
          else
           fact=1 
         }
-      }
-      wwoman(fact);
+      
+      //wwoman(fact);
+      superman(fact);
+      //batman(fact)
+      
   pop()
-
+}
 
   
   push()
@@ -410,6 +630,12 @@ function bgdraw() {
   }
   pop()
 //}
+
+push()
+  
+  translate(width/2,height/2)
+  gramapin()
+  pop()
 
 textSize(32);
 text(song.currentTime(), 30, 50);
