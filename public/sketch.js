@@ -173,11 +173,74 @@ function chakra()
   pop()
 }
 
-function batman()
+function batman(f)
 {
-  fill(255,0,45);
-  rect(-50,-50,100,100);
+  fill(255,218,185);
+  beginShape()
+  vertex(-100*f,-10*f)
+  vertex(100*f,-10*f)
+  vertex(100*f,0*f)
+  vertex(75*f,60*f)
+  vertex(40*f,100*f)
+  vertex(-40*f,100*f)
+  vertex(-75*f,60*f)
+  vertex(-100*f,0*f)
+  vertex(-100*f,-10*f)
+  endShape()
 
+  //mask
+  fill(51)
+  triangle(-90*f,-123*f,90*f,-123*f,0,-140*f)
+  rect(-100*f,-125*f,200*f,125*f);
+  triangle(-100*f,-124*f,-50*f,-124*f,-75*f,-170*f)
+  triangle(100*f,-124*f,50*f,-124*f,75*f,-170*f)
+  triangle(-100*f,-15,100*f,-15,0,10*f)
+  beginShape()
+  vertex(75*f,-12*f)
+  vertex(100*f,-12*f)
+  vertex(100*f,0*f)
+  vertex(75*f,60*f)
+  vertex(75*f,-12*f)
+  endShape()
+  beginShape()
+  vertex(-75*f,-12*f)
+  vertex(-100*f,-12*f)
+  vertex(-100*f,0*f)
+  vertex(-75*f,60*f)
+  vertex(-75*f,-12*f)
+  endShape()
+  
+  //tilak
+  fill(190,0,0)
+  ellipse(0,-75*f,35*f,35*f)
+  noFill()
+  stroke(255)
+  strokeWeight(5)
+  beginShape()
+  vertex(-25*f,-120*f)
+  vertex(-25*f,-70*f)
+  bezierVertex(-15*f,-40*f,15*f,-40*f,25*f,-70*f)  
+  vertex(25*f,-70*f)
+  vertex(25*f,-120*f)
+  endShape()
+  line(-12*f,-37*f,12*f,-37*f)
+  
+  noStroke()
+  //shadow
+  fill(0,50)
+  beginShape()
+  vertex(0,-125*f)
+  vertex(0,100*f)
+  vertex(-40*f,100*f)
+  vertex(-75*f,60*f)
+  vertex(-100*f,0)
+  vertex(-100*f,-125*f)
+  vertex(-75*f,-150*f)
+  vertex(-50*f,-125*f)
+  vertex(0*f,-140*f)
+  vertex(0*f,-125*f)
+
+  endShape()
 }
 
 function star(x, y, radius1, radius2, npoints) {
@@ -491,7 +554,7 @@ function loaded() {
         console.log(amp.getLevel())
         setTimeout(function(){
             roll=1;
-          },49500)
+          },49400)
         flag=1;
       }
     }
@@ -552,7 +615,7 @@ function bgdraw() {
   gramaphone(gramang)
   pop()
   
-  if(roll)
+  if(1/*roll*/)//<--dont forget to uncomment!!
   {
   push()
   translate(width/2,height/2)
@@ -580,12 +643,13 @@ function bgdraw() {
         }
       
       //wwoman(fact);
-      superman(fact);
-      //batman(fact)
+      //superman(fact);
+      batman(fact)
       
   pop()
 }
-
+  
+  
   
   push()
   var pts=20
