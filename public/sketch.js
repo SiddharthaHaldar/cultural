@@ -224,7 +224,7 @@ function batman(f)
   vertex(25*f,-120*f)
   endShape()
   line(-12*f,-37*f,12*f,-37*f)
-  
+
   noStroke()
   //shadow
   fill(0,50)
@@ -528,7 +528,7 @@ noStroke()
 
 function setup() {
   createCanvas(windowWidth,windowHeight);
-  song = loadSound("Bhayanak Atma.mp3", loaded);
+  song = loadSound("Bhayanak Atma Edited.mp3", loaded);
   amp = new p5.Amplitude();
   amp.setInput(song)
   background(255,0,0);
@@ -554,7 +554,7 @@ function loaded() {
         console.log(amp.getLevel())
         setTimeout(function(){
             roll=1;
-          },49400)
+          },20500)
         flag=1;
       }
     }
@@ -615,7 +615,7 @@ function bgdraw() {
   gramaphone(gramang)
   pop()
   
-  if(1/*roll*/)//<--dont forget to uncomment!!
+  if(roll)
   {
   push()
   translate(width/2,height/2)
