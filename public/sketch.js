@@ -7,7 +7,8 @@ var ang2=0;
 var gramang=0;
 var fact=1;
 var go=0,roll=0;
-
+var superflag=1
+var angry=false
 function gramaphone(ang)
 {
 
@@ -239,8 +240,13 @@ function batman(f)
   vertex(-50*f,-125*f)
   vertex(0*f,-140*f)
   vertex(0*f,-125*f)
-
   endShape()
+
+  strokeWeight(3)
+  stroke(210,105,30,140)
+  line(-35*f,60*f,30*f,55*f)
+  //line(30*f,55*f,35*f,48*f)
+  noStroke()
 }
 
 function star(x, y, radius1, radius2, npoints) {
@@ -450,9 +456,12 @@ function superman(f)
   line(70*f,20*f,50*f,30*f)
   line(50*f,30*f,55*f,80*f)
 
-  //line(-35*f,60*f,30*f,55*f)
-  //line(30*f,55*f,35*f,48*f)
-  
+  if(!angry){
+  line(-35*f,60*f,30*f,55*f)
+  line(30*f,55*f,35*f,48*f)
+  }
+
+  if(angry){
   fill(0)
   beginShape()
   vertex(-35*f,40*f)
@@ -509,6 +518,7 @@ function superman(f)
   endShape()
 }
 }
+}
 noStroke()
   
   //shadow
@@ -527,7 +537,8 @@ noStroke()
 }
 
 function setup() {
-  createCanvas(windowWidth,windowHeight);
+  var canvas= createCanvas(windowWidth,windowHeight);
+  canvas.style('z-index','-1')
   song = loadSound("Bhayanak Atma Edited.mp3", loaded);
   amp = new p5.Amplitude();
   amp.setInput(song)
@@ -555,6 +566,9 @@ function loaded() {
         setTimeout(function(){
             roll=1;
           },20500)
+        setTimeout(function(){
+          angry=true;
+        },39000)
         flag=1;
       }
     }
@@ -642,9 +656,23 @@ function bgdraw() {
           fact=1 
         }
       
-      //wwoman(fact);
-      //superman(fact);
+      if(!angry){
+      if(ang2%120==0)
+        {superflag+=1
+          if(superflag==4)
+              superflag=1}
+      
+      if(superflag==1)
       batman(fact)
+      else if(superflag==2)
+      superman(fact);
+      else
+      wwoman(fact);
+    }
+    if(angry)
+    {
+      superman(1.2) 
+    }
       
   pop()
 }
