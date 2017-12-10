@@ -46,8 +46,41 @@ function gramaphone(ang)
   noFill()
   stroke(255,120)
   strokeWeight(2)
-  //ellipse(0,0,500,500)
+  
+  var desi=['D','E','S','I','D','C']
   push()
+  rotate((-ang*PI/180)/2)
+  rad=50
+  fill(0)
+  ellipse(0,0,60,60)
+  fill(0,102,153)
+  
+  textSize(32)
+  
+  for(var j=0;j<=300;j+=60)
+  {
+    /*var x=rad*Math.cos(j*PI/180)
+    var y=rad*Math.sin(j*PI/180)*/
+    push()
+    rotate(j*PI/180)
+    textSize(32)
+    if(j/60==3||j/60==5)
+      textAlign(RIGHT,CENTER)
+    else
+      textAlign(CENTER,CENTER)
+    var symb;
+    if(j/60==0||j/60==4)
+        symb=desi[j/60]+"-"
+    else if(j/60==3||j/60==5)
+      symb="-"+desi[j/60]
+    else
+      symb="-"+desi[j/60]+"-"
+    text(symb,0,-50)
+    pop()
+  } 
+   
+  pop()
+  /*push()
   rotate(ang*PI/180)
   var rad=125;
   for(var j=0;j<=45;j++)
@@ -82,7 +115,7 @@ function gramaphone(ang)
     line(x,y,x,y)
   } 
   } 
-  pop()
+  pop()*/
   //gramapin()
 }
 
@@ -538,6 +571,7 @@ noStroke()
 
 function setup() {
   var canvas= createCanvas(windowWidth,windowHeight);
+  canvas.position(0,0)
   canvas.style('z-index','-1')
   song = loadSound("Bhayanak Atma Edited.mp3", loaded);
   amp = new p5.Amplitude();
