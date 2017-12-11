@@ -7,7 +7,7 @@ var ang2=0;
 var gramang=0;
 var fact=1;
 var go=0,roll=0;
-var superflag=1
+var superflag=0
 var angry=false
 function gramaphone(ang)
 {
@@ -59,8 +59,6 @@ function gramaphone(ang)
   
   for(var j=0;j<=300;j+=60)
   {
-    /*var x=rad*Math.cos(j*PI/180)
-    var y=rad*Math.sin(j*PI/180)*/
     push()
     rotate(j*PI/180)
     textSize(32)
@@ -604,6 +602,11 @@ function loaded() {
           angry=true;
         },39000)
         flag=1;
+        setInterval(function(){
+          superflag+=1;
+          if(superflag==4)
+            superflag=1
+        },2000)
       }
     }
     },1)
@@ -691,10 +694,10 @@ function bgdraw() {
         }
       
       if(!angry){
-      if(ang2%120==0)
+      /*if(ang2%120==0)
         {superflag+=1
           if(superflag==4)
-              superflag=1}
+              superflag=1}*/
       
       if(superflag==1)
       batman(fact)
