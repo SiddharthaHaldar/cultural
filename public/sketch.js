@@ -10,7 +10,7 @@ var go=0,roll=0;
 var superflag=0
 var angry=false
 var loading=true;
-var loadarr=[0,0,0,0,0,0,0];
+var loadarr=[0,0,0,0,0,0,0,0];
 var c=0;
 var xfact=15;
 var front=0;
