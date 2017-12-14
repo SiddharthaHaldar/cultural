@@ -681,7 +681,7 @@ function bgdraw() {
     smooth();
   if(loading)
     {loader()}
-  //else{
+  else{
   var vol = amp.getLevel();
   var diam = map(vol, 0, 0.3, 10, 200);
   var diam2 = map(vol, 0, 0.3, 200, 300);
