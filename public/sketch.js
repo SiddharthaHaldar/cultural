@@ -9,6 +9,37 @@ var fact=1;
 var go=0,roll=0;
 var superflag=0
 var angry=false
+var loading=true;
+var loadarr=[0,0,0,0,0,0,0];
+var c=0;
+var xfact=15;
+var front=0;
+var topp=4;
+
+function loader()
+{
+  background(0)
+    c+=1;
+    strokeWeight(5)
+    stroke(255)
+    if(c%5==0){
+    var temp=loadarr.pop()
+    loadarr.unshift(temp)
+     
+    }
+    push()
+    translate(width/2-2*xfact,height/2)
+    
+    for(load=front;load<=topp;load++)
+    {
+        var ht=10+20*Math.sin(loadarr[load]*PI/180)
+        line(0+(load*xfact),0,0+(load*xfact),-1*ht)
+        line(0+(load*xfact),0,0+(load*xfact),ht)
+    }
+    pop()
+    noStroke()
+}
+
 function gramaphone(ang)
 {
 
@@ -575,6 +606,10 @@ function setup() {
   amp = new p5.Amplitude();
   amp.setInput(song)
   background(255,0,0);
+  for(load=0;load<=180-20;load+=20)
+      {
+        loadarr.push(load)
+      }
   console.log(document.getElementById("test").value)
   frameRate(60);
   setInterval(bgdraw,5)
@@ -593,7 +628,7 @@ function loaded() {
   setInterval(function(){
     if(flag==0){
     if(amp.getLevel()>0)
-      { 
+      { loading=false
         console.log(amp.getLevel())
         setTimeout(function(){
             roll=1;
@@ -644,6 +679,9 @@ function loaded() {
 function bgdraw() {
   //if(go==1){
     smooth();
+  if(loading)
+    {loader()}
+  else{
   var vol = amp.getLevel();
   var diam = map(vol, 0, 0.3, 10, 200);
   var diam2 = map(vol, 0, 0.3, 200, 300);
@@ -769,7 +807,7 @@ push()
 textSize(32);
 text(song.currentTime(), 30, 50);
 fill(255);
-
+}
 }
 
 function togglePlaying() {
