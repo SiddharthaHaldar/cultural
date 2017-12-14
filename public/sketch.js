@@ -679,8 +679,8 @@ function loaded() {
 function bgdraw() {
   //if(go==1){
     smooth();
-  /*if(loading)
-    {loader()}*/
+  if(loading)
+    {loader()}
   //else{
   var vol = amp.getLevel();
   var diam = map(vol, 0, 0.3, 10, 200);
@@ -807,7 +807,7 @@ push()
 textSize(32);
 text(song.currentTime(), 30, 50);
 fill(255);
-//}
+}
 }
 
 function togglePlaying() {
