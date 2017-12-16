@@ -620,9 +620,9 @@ function setup() {
 
 function loaded() {
   song.play();
-  button = createButton("pause");
+  /*button = createButton("pause");
   button.position(20,50)
-  button.mousePressed(togglePlaying);
+  button.mousePressed(togglePlaying);*/
   var flag=0;
   var i=0;
   setInterval(function(){
