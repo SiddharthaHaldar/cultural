@@ -746,7 +746,7 @@ function bgdraw() {
     }
     if(angry)
     {
-      superman(1.2) 
+      superman(2) 
     }
       
   pop()
